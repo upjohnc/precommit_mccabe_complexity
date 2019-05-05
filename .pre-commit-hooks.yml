@@ -1,6 +1,0 @@
-- id: mccabe-complexity
-  name: Run mccabe complexity test
-  description: This hook runs mccabe complexity to fail if complexity greater than 12
-  entry: mccabe-complexity
-  language: python
-  files: \.py$
