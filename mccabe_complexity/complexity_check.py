@@ -1,12 +1,3 @@
-from __future__ import print_function
-
-"""
-Pre-commit hook for Cyclomatic Complexity check
-Works well with radon==2.2.0
-"""
-
-__author__ = 'Ivan Styazhkin <ivan@nesusvet.com>'
-
 import subprocess
 
 GIT_CHANGES_CMD = 'git diff development --name-only --cached --diff-filter=ACM'.split()
