@@ -3,7 +3,7 @@ import subprocess
 GIT_CHANGES_CMD = 'git diff development --name-only --cached --diff-filter=ACM'.split()
 GIT_HASH_CMD = 'git ls-files --stage'.split()
 
-COMPLEXITY_LEVEL = 12
+COMPLEXITY_LEVEL = 5
 CC_CMD = 'flake8 --max-complexity {complexity_level} {file}'
 
 
