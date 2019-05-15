@@ -34,12 +34,14 @@ def check_line_complexity(file_name):
 def main():
     filename_list = get_python_changes()
     if not filename_list:
-        return
+        return 0
 
-    clean_output_list = '\n'.join(list(filter(lambda x: x is not None, map(check_line_complexity, filename_list))))
+    clean_output_list = list(filter(lambda x: x is not None, map(check_line_complexity, filename_list)))
+    if not clean_output_list:
+        return 0
     print('\033[91mCheck {count} files with McCabe Complexity failed (greater than {complexity})\033[0m'.format(
         count=len(filename_list), complexity=COMPLEXITY_LEVEL))
-    print(clean_output_list)
+    print('\n'.join(clean_output_list))
     return 1
 
 
