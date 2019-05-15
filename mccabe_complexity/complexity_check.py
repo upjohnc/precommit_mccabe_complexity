@@ -7,9 +7,6 @@ COMPLEXITY_LEVEL = 12
 CC_CMD = 'flake8 --max-complexity {complexity_level} {file}'
 
 
-# RADON_CMD = ('radon cc -s -n %s' % WARNING_LEVEL).split()
-
-
 def get_lines(stdout_text):
     """Assumes your console uses utf-8"""
     return stdout_text.strip().decode('utf-8').split('\n')
