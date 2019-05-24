@@ -30,8 +30,9 @@ def check_line_complexity(file_name):
 
 
 @click.command()
+@click.argument('filenames', nargs='*')
 @click.option('--base_branch', default='master')
-def main(base_branch):
+def main(filenames, base_branch):
     git_changes_cmd = 'git diff {base_branch} --name-only --cached --diff-filter=ACM'.format(base_branch=base_branch)
 
     filename_list = get_python_changes(git_changes_cmd)
