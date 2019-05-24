@@ -32,7 +32,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--base_branch', nargs='?')
     arguments = parser.parse_args(argv)
-    base_branch = 'development' if arguments.base_branch is None else arguments.base_branch
+    base_branch = arguments.base_branch
 
     git_changes_cmd = 'git diff {base_branch} --name-only --cached --diff-filter=ACM'.format(base_branch=base_branch)
 
