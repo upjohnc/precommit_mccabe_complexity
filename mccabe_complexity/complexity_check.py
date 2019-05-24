@@ -1,6 +1,6 @@
+import argparse
 import subprocess
 
-GIT_CHANGES_CMD = 'git diff development --name-only --cached --diff-filter=ACM'.split()
 GIT_HASH_CMD = 'git ls-files --stage'.split()
 
 COMPLEXITY_LEVEL = 12
@@ -12,9 +12,9 @@ def get_lines(stdout_text):
     return stdout_text.strip().decode('utf-8').split('\n')
 
 
-def get_python_changes():
+def get_python_changes(git_command):
     """Returns python filenames which are staged"""
-    python_changes = get_lines(subprocess.check_output(GIT_CHANGES_CMD))
+    python_changes = get_lines(subprocess.check_output(git_command.split()))
     return [s for s in python_changes if s.endswith('.py')]
 
 
@@ -28,8 +28,15 @@ def check_line_complexity(file_name):
     return '\n'.join(error_lines) if len(error_lines) > 0 else None
 
 
-def main():
-    filename_list = get_python_changes()
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--base_branch', nargs='?')
+    arguments = parser.parse_args(argv)
+    base_branch = 'development' if arguments.base_branch is None else arguments.base_branch
+
+    git_changes_cmd = 'git diff {base_branch} --name-only --cached --diff-filter=ACM'.format(base_branch=base_branch)
+
+    filename_list = get_python_changes(git_changes_cmd)
     if not filename_list:
         return 0
 
