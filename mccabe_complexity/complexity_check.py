@@ -37,7 +37,7 @@ def main(base_branch, filenames):
 
     filename_list = get_python_changes(git_changes_cmd)
     print(filename_list)
-    return 0
+    return 1
     if not filename_list:
         return 0
 
