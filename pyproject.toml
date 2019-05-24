@@ -7,7 +7,7 @@ module = "mccabe_complexity"
 author = "Chad"
 author-email = "c@me.com"
 classifiers = ["License :: OSI Approved :: MIT License"]
-requires = ["flake8", "click"]
+requires = ["flake8"]
 
 [tool.flit.scripts]
 mccabe-complexity = 'mccabe_complexity.complexity_check:main'
