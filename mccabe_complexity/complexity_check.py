@@ -39,8 +39,6 @@ def main(argv=None):
     git_changes_cmd = 'git diff {base_branch} --name-only --cached --diff-filter=ACM'.format(base_branch=base_branch)
 
     filename_list = get_python_changes(git_changes_cmd)
-    print(filename_list)
-    return 1
     if not filename_list:
         return 0
 
