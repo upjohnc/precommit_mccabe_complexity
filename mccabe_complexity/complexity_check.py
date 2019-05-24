@@ -1,5 +1,6 @@
-import argparse
 import subprocess
+
+import click
 
 GIT_HASH_CMD = 'git ls-files --stage'.split()
 
@@ -28,12 +29,9 @@ def check_line_complexity(file_name):
     return '\n'.join(error_lines) if len(error_lines) > 0 else None
 
 
-def main(argv=None):
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--base_branch', nargs='?')
-    arguments = parser.parse_args(argv)
-    base_branch = arguments.base_branch
-
+@click.command()
+@click.option('--base_branch', default='master')
+def main(base_branch):
     git_changes_cmd = 'git diff {base_branch} --name-only --cached --diff-filter=ACM'.format(base_branch=base_branch)
 
     filename_list = get_python_changes(git_changes_cmd)
