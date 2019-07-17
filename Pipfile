@@ -10,6 +10,7 @@ flit = "*"
 flake8 = "*"
 isort = "*"
 click = "*"
+flit = "*"
 
 [requires]
 python_version = "3.6"
