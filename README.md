@@ -14,3 +14,7 @@ Hook for checking McCabe complexity
       - id: mccabe-complexity
         args: ['--base_branch=master']
 ```
+
+## Shortcoming
+- need to have a commit on master for it to compare against (needed for beginning repos)
+- need to run from a "feature" branch (not master) so that it can compare against master
